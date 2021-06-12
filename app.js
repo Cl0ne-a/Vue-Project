@@ -1,8 +1,9 @@
 const App = {
     data() {
         return {
-            counter: 0,
-            appTitle: 'Counter'
+            placeholderString: 'Input note Title',
+            appTitle: 'Notes List',
+            inputVal: ''
         }
     }
 }

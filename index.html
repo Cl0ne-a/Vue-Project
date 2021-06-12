@@ -12,8 +12,13 @@
         <div class="card ">
             <h1>{{ appTitle }}</h1>
             <div class="form-control">
-                <input type="text">
+                <label>
+                    <input type="text" v-bind:placeholder="placeholderString" v-bind:value="inputVal">
+                </label>
             </div>
+            <h2>inputValue: {{ inputValue }}</h2>
+            <button class="btn">Add</button>
+            <hr />
         </div>
     </div>
 
