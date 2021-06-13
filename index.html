@@ -10,12 +10,12 @@
 
 <div class="container" id="app">
     <div class="card ">
-        <h1>{{ title }}</h1>
+        <h1 :style="{ color : this.inputVal.length > 8 ? 'red' : 'green'}">{{ title }}</h1>
         <div class="form-control">
             <input
-                    type="text" v-bind:placeholder="this.placeholderString"
-                    :value="this.inputVal"
-                    @input="this.inputChangeHandler"
+                    type="text"
+                    :placeholder="this.placeholderString"
+                    v-model="this.inputVal"
                     @keypress.enter="this.addNewNote()"
             />
         </div>
@@ -23,13 +23,19 @@
         <hr/>
         <ul class="list" v-if="(this.notes.length !== 0)">
             <li class="list-item" v-for="(myNote, ind) in this.notes">
-                {{ this.toUpRegister(myNote) }}
+                <span :class="['bold', {'primary': myNote.length > 5}]}">{{ this.toUpRegister(myNote) }}</span>
                 <button class="btn danger" @click="this.removeNote(ind, $event)">Delete</button>
             </li>
+            <hr/>
+            <li>
+                <div>
+                    <strong> Number of notes: {{notes.length}}</strong>
+                </div>
+                <div>
+                    <strong> Doubled: {{doubledNumComputed}}</strong>
+                </div>
+            </li>
         </ul>
-        <!--            <ul class="list" v-else="(this.notes.length === 0)">-->
-        <!--               <li> Add note</li>-->
-        <!--            </ul>-->
         <div v-else> Add some note</div>
     </div>
 </div>

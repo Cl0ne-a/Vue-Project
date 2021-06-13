@@ -8,11 +8,7 @@ const App = {
         }
     },
     methods: {
-        inputChangeHandler(event) {
-            this.inputVal = event.target.value
-        },
-
-        addNewNote() {
+          addNewNote() {
             if (this.inputVal !== '') {
                 this.notes.push(this.inputVal)
                 this.inputVal = ''
@@ -25,6 +21,20 @@ const App = {
 
         removeNote(idx, event) {
             this.notes.splice(idx, 1)
+        },
+
+
+    },
+    computed: {
+        doubledNumComputed() {
+            return this.notes.length * 2
+        }
+    },
+    watch: {
+        inputVal(value) {
+            if(value.length > 10) {
+                this.inputVal = ''
+            }
         }
     }
 }
