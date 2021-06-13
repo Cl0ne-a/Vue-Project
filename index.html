@@ -23,7 +23,8 @@
         <hr/>
         <ul class="list" v-if="(this.notes.length !== 0)">
             <li class="list-item" v-for="(myNote, ind) in this.notes">
-                <span :class="['bold', {'primary': myNote.length > 5}]}">{{ this.toUpRegister(myNote) }}</span>
+                <span :class="['bold', {'primary': myNote.length > 5}]">{{ this.toUpRegister(myNote) }}</span>
+
                 <button class="btn danger" @click="this.removeNote(ind, $event)">Delete</button>
             </li>
             <hr/>
