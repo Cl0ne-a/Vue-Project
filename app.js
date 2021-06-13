@@ -2,8 +2,13 @@ const App = {
     data() {
         return {
             placeholderString: 'Input note Title',
-            appTitle: 'Notes List',
+            title: 'Notes List',
             inputVal: ''
+        }
+    },
+    methods: {
+        inputChangeHandler(event) {
+            this.inputVal  = event.target.inputVal
         }
     }
 }

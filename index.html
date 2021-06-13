@@ -10,14 +10,15 @@
 
     <div class="container" id="app">
         <div class="card ">
-            <h1>{{ appTitle }}</h1>
+            <h1>{{ title }}</h1>
             <div class="form-control">
-                <label>
-                    <input type="text" v-bind:placeholder="placeholderString" v-bind:value="inputVal">
-                </label>
+                <input
+                        type="text" v-bind:placeholder="placeholderString"
+                        v-bind:value="inputVal"
+                        v-on:input="this.inputChangeHandler(inputVal)"
+                />
             </div>
             <h2>inputValue: {{ inputValue }}</h2>
-
             <button class="btn">Add</button>
             <hr />
         </div>
