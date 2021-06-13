@@ -3,12 +3,22 @@ const App = {
         return {
             placeholderString: 'Input note Title',
             title: 'Notes List',
-            inputVal: ''
+            inputVal: '',
+            notes: ['some note', 225, 'note 54']
         }
     },
     methods: {
         inputChangeHandler(event) {
-            this.inputVal  = event.target.inputVal
+            this.inputVal = event.target.value
+        },
+
+        addNewNote() {
+            this.notes.push(this.inputVal)
+        },
+
+        removeNote(idx, event) {
+            this.notes.splice(idx, 1)
+
         }
     }
 }

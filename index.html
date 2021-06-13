@@ -13,14 +13,24 @@
             <h1>{{ title }}</h1>
             <div class="form-control">
                 <input
-                        type="text" v-bind:placeholder="placeholderString"
-                        v-bind:value="inputVal"
-                        v-on:input="this.inputChangeHandler(inputVal)"
+                        type="text" v-bind:placeholder="this.placeholderString"
+                        v-bind:value="this.inputVal"
+                        v-on:input="this.inputChangeHandler"
+                        v-on:keypress.enter="this.addNewNote()"
                 />
             </div>
-            <h2>inputValue: {{ inputValue }}</h2>
-            <button class="btn">Add</button>
+            <button class="btn" v-on:click="this.addNewNote">Add</button>
             <hr />
+            <ul class="list" v-if="(this.notes.length !== 0)">
+                <li class="list-item" v-for="(myNote, ind) in this.notes">
+                    {{myNote}}
+                    <button class="btn danger" v-on:click="this.removeNote(ind, $event)">Delete</button>
+                </li>
+            </ul>
+<!--            <ul class="list" v-else="(this.notes.length === 0)">-->
+<!--               <li> Add note</li>-->
+<!--            </ul>-->
+            <div v-else> Add some note </div>
         </div>
     </div>
 
