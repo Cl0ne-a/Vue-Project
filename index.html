@@ -2,39 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Vue Basics</title>
-    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="theme.css"/>
 </head>
 <body>
 
-    <div class="container" id="app">
-        <div class="card ">
-            <h1>{{ title }}</h1>
-            <div class="form-control">
-                <input
-                        type="text" v-bind:placeholder="this.placeholderString"
-                        v-bind:value="this.inputVal"
-                        v-on:input="this.inputChangeHandler"
-                        v-on:keypress.enter="this.addNewNote()"
-                />
-            </div>
-            <button class="btn" v-on:click="this.addNewNote">Add</button>
-            <hr />
-            <ul class="list" v-if="(this.notes.length !== 0)">
-                <li class="list-item" v-for="(myNote, ind) in this.notes">
-                    {{myNote}}
-                    <button class="btn danger" v-on:click="this.removeNote(ind, $event)">Delete</button>
-                </li>
-            </ul>
-<!--            <ul class="list" v-else="(this.notes.length === 0)">-->
-<!--               <li> Add note</li>-->
-<!--            </ul>-->
-            <div v-else> Add some note </div>
+<div class="container" id="app">
+    <div class="card ">
+        <h1>{{ title }}</h1>
+        <div class="form-control">
+            <input
+                    type="text" v-bind:placeholder="this.placeholderString"
+                    :value="this.inputVal"
+                    @input="this.inputChangeHandler"
+                    @keypress.enter="this.addNewNote()"
+            />
         </div>
+        <button class="btn" v-on:click="this.addNewNote">Add</button>
+        <hr/>
+        <ul class="list" v-if="(this.notes.length !== 0)">
+            <li class="list-item" v-for="(myNote, ind) in this.notes">
+                {{ this.toUpRegister(myNote) }}
+                <button class="btn danger" @click="this.removeNote(ind, $event)">Delete</button>
+            </li>
+        </ul>
+        <!--            <ul class="list" v-else="(this.notes.length === 0)">-->
+        <!--               <li> Add note</li>-->
+        <!--            </ul>-->
+        <div v-else> Add some note</div>
     </div>
+</div>
 
-    <script src="https://unpkg.com/vue@next"></script>
-    <script src="app.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="app.js"></script>
 </body>
 </html>
